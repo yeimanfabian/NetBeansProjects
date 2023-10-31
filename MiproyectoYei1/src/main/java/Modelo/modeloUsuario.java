@@ -113,9 +113,9 @@ public class modeloUsuario {
         }
         return llenar_combo;
         
-   
+    }
     
-    public void iniciarconexion (){;
+        public void iniciarconexion (){;
         Conexion cone = new Conexion();
         Connection cn = cone.iniciarConexion();
         String sql = "call ins_usuario (?,?,?,?,?,?,?,?,?,?)";
@@ -140,6 +140,29 @@ public class modeloUsuario {
 
         }
         cone.cerrarConexion();
-    }
-}
+    {
 
+    public void buscarUsuario (int valor) {
+    Conexion cone = new Conexion ();
+    Connection cn = cone.iniciarConexion();
+    String sql = "call bus_usuario";
+    
+try {
+    Statement st = cn.createStatement();
+    ResultSet rs = st.excuteQuery (sql);
+    
+while (rs.next()){
+    setdoc(doc:rs.getInt(nom));
+}
+    
+}catch (SQLException e){
+    e.printStackTrace();
+}
+        }
+    public string obtenerseleccion(Map<string,Integer>)
+    }
+
+    
+    
+
+    

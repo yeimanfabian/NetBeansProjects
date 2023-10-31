@@ -49,6 +49,7 @@ public class ModeloLogin {
             }
             
         } catch (SQLException e) {
+            
         }
         
         return result;
