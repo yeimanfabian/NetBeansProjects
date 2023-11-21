@@ -9,7 +9,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 public class modeloUsuario {
 
@@ -142,27 +145,139 @@ public class modeloUsuario {
         cone.cerrarConexion();
     {
 
-    public void buscarUsuario (int valor) {
-    Conexion cone = new Conexion ();
-    Connection cn = cone.iniciarConexion();
-    String sql = "call bus_usuario";
-    
-try {
-    Statement st = cn.createStatement();
-    ResultSet rs = st.excuteQuery (sql);
-    
-while (rs.next()){
-    setdoc(doc:rs.getInt(nom));
-}
-    
-}catch (SQLException e){
-    e.printStackTrace();
-}
+         public void  ModeloUsuario (int valor) { 
+       
+        Conexion conect = new Conexion();
+        Connection co = conect.iniciarConexion();
+        String sql = "call buscar_usuario(" + valor + ")";
+        try {
+            Statement st = co.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                setDoc(rs.getInt(1));
+                setTipo_doc(rs.getString(2));
+                setNom(rs.getString(3));
+                setRol(rs.getInt(4));
+                setTele(rs.getString(5));
+                setCorreo(rs.getString(6));
+                setSex(rs.getInt(7));
+                setDire(rs.getString(8));
+                setFec(rs.getDate(9));
+                setLog(rs.getString(10));
+                setContra(rs.getString(11));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-    public string obtenerseleccion(Map<string,Integer>)
+
     }
 
-    
-    
+    //Para que al actualizar me muestre el dato que selecciono el usuario
+    public String obtenerSeleccion(Map<String, Integer> info, int valor) {
+        for (Map.Entry<String, Integer> seleccion : info.entrySet()) {
+            if (seleccion.getValue() == valor) {
+                return seleccion.getKey();
+            }
+        }
+        return null;
+    }
 
-    
+    //Actualizar usuario
+    public void actualizarUsuario() {
+        Conexion conect = new Conexion();
+        Connection con = conect.iniciarConexion();
+        String sql = "call actualizar_usuario(?,?,?,?,?,?,?,?,?)";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, getDoc());
+            ps.setString(2, getNom());
+            ps.setInt(3, getRol());
+            ps.setString(4, getTele());
+            ps.setString(5, getCorreo());
+            ps.setInt(6, getSex());
+            ps.setString(7, getDire());
+            ps.setDate(8, getFec());
+            ps.setString(9, getContra());
+            ps.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Información Actualizada");
+            con.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        conect.cerrarConexion();
+    }
+
+    //Eliminar usuario
+    public void eliminarUsuario() {
+        Conexion conect = new Conexion();
+        Connection con = conect.iniciarConexion();
+        String sql = "call eliminar_usuario(?)";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, getDoc());
+            ps.executeUpdate();
+            Icon elimina = new ImageIcon(getClass().getResource("/img/basura.png"));
+            JOptionPane.showMessageDialog(null, "Registro Eliminado", "Eliminar Usuario", JOptionPane.PLAIN_MESSAGE, (Icon) elimina);
+//            JOptionPane.showMessageDialog(null, "¿Desea Eliminar el Registro?");
+            con.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        conect.cerrarConexion();
+    }
+
+    private void setTipo_doc(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private void setTele(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private void setCorreo(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private void setDire(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private void setLog(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private void setContra(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private String getTele() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private String getDire() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private String getCorreo() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private String getContra() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public void MostrarTablaUsuarios(JPanel jpUsuario, String string, String usuario) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public void mostrarTablaUsuario(JPanel jpUsuario, String string, String usuario) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+}

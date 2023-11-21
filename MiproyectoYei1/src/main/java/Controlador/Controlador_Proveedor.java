@@ -11,13 +11,14 @@ import java.util.Map;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-public class Controlador_Provedor implements ActionListener {
+public class Controlador_Proveedor implements ActionListener {
 
-    Nuevo_Provedor provee = new Nuevo_Provedor();
+   
+    Nuevo provee = new Nuevo Proveedor();
     Principal prin = new Principal();
-    Provedor modproveedor = new Proverdor();
+    Proveedor modproveedor = new Proveerdor();
 
-    public Controlador_Provedor() {
+       public  Controlador_Provedor(){
         provee.getBtnguardarprovee().addActionListener(this);
         provee.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         provee.addWindowListener(new WindowAdapter() {
