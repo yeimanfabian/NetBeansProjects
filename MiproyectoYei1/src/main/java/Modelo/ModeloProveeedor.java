@@ -92,7 +92,7 @@ public class ModeloProveeedor {
     public void setFec(Date fec) {
         this.fec = fec;
     }
-
+ 
     public Map<String, Integer> llenarCombo(String valor) {
         Conexion conect = new Conexion();
         Connection co = conect.iniciarConexion();
@@ -105,16 +105,48 @@ public class ModeloProveeedor {
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {
                 llenar_combo.put(rs.getString(2), rs.getInt(1));
+                
+
             }
         } catch (SQLException e) {
         }
         return llenar_combo;
     }
+    
+         public void actualizarProveedor() {
+        Conexion conect = new Conexion();
+        Connection con = conect.iniciarConexion();
+        String sql = "call actualizar_proveedor(?,?,?,?,?,?,?,?)";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, getDoc());
+            ps.setString(2, getNom());
+            ps.setString(3, getTele());
+            ps.setString(4, getCorreo());
+            ps.setString(5, getDire());
+            ps.setString(6, getTipo_per());
+            ps.setInt(7, getSex());
+            ps.setDate(8, getFec());
+
+            ps.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Información Actualizada");
+            con.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        conect.cerrarConexion();
+    }
+
 
     public void insertarProveedor() {
         Conexion conect = new Conexion();
         Connection co = conect.iniciarConexion();
         String sql = "Call inst_proveedor(?,?,?,?,?,?,?,?,?)";
+        
+        
 
         try {
             PreparedStatement ps = co.prepareStatement(sql);
@@ -148,8 +180,16 @@ public class ModeloProveeedor {
             }
             if (limpiar instanceof JDateChooser jDateChooser){
                 jDateChooser.setDate(null);
+              
+                
+                
+                
             }
         }
         
+    }
+
+    public void mostrarTablaProveedor(Object jTablaBuscarusuario, String string, String factura) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

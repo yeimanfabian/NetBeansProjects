@@ -1,8 +1,10 @@
 package Controlador;
 
-import Modelo.ModeloUsuario;
-import Vista.Nuevo_Usuario;
+import Modelo.modeloUsuario;
+import Vista.Nueva;
+
 import Vista.Principal;
+import Vista.Usuarios;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -16,14 +18,14 @@ import javax.swing.border.Border;
 
 public class ControladorUsuario implements ActionListener {
 
-    NuevoUsuario usu = new NuevoUsuario();
+    Usuarios usu = new Usuarios();
     Principal prin = new Principal();
-    ModeloUsuario modusuario = new ModeloUsuario();
+    modeloUsuario modusuario = new modeloUsuario();
 
     //constructor
     public ControladorUsuario() {
-        usu.getBtnGuardar().addActionListener(this);
-        usu.getBtnvista().addActionListener(this);
+        usu.getjButton1().addActionListener(this);
+        usu.getBtnVista().addActionListener(this);
         usu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         usu.addWindowListener(new WindowAdapter() {
             @Override
@@ -41,62 +43,62 @@ public class ControladorUsuario implements ActionListener {
         usu.setVisible(true);
 
         //lleno combo box sexo
-        usu.getCmbSexo().addItem("Seleccione...");
+        usu.getjComboBox1().addItem("Seleccione...");
         Map<String, Integer> combosexo = modusuario.llenarCombo("sexo");
         for (String sexo : combosexo.keySet()) {
-            usu.getCmbSexo().addItem(sexo);
+            usu.getjComboBox1().addItem(sexo);
         }
         //lleno combo box rol
-        usu.getCmbrol().addItem("Seleccione...");
+        usu.getJcbCargo().addItem("Seleccione...");
         Map<String, Integer> comborol = modusuario.llenarCombo("rol");
         for (String rol : comborol.keySet()) {
-            usu.getCmbrol().addItem(rol);
+            usu.getJcbCargo().addItem(rol);
         }
     }
 
     //Metodo adstracto
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource().equals(usu.getBtnvista())) {
+        if (e.getSource().equals(usu.getBtnVista())) {
 
-            if (usu.getPssContrase().getEchoChar() == '\u2022') {
-                usu.getPssContrase().setEchoChar((char) 0);
-                usu.getBtnvista().setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ojo-cruzado.png")));
+            if (usu.getjPasswordUSUARIO().getEchoChar() == '\u2022') {
+                usu.getjPasswordUSUARIO().setEchoChar((char) 0);
+                usu.getBtnVista().setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ojo-cruzado.png")));
             } else {
-                usu.getPssContrase().setEchoChar('\u2022');
-                usu.getBtnvista().setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ojo.png")));
+                usu.getjPasswordUSUARIO().setEchoChar('\u2022');
+                usu.getBtnVista().setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ojo.png")));
             }
         }
         if (e.getSource().equals(usu.getBtnGuardar())) {
             //validar campos vacios
-            if ((usu.getTxtDocumento().getText().isEmpty()) || (usu.getCmbtipodocu().getSelectedItem().equals("Seleccione...")) || (usu.getTxtNombre().getText().isEmpty()) || (usu.getTxtDire().getText().isEmpty())
-                    || (usu.getTxtCorreo().getText().isEmpty()) || (usu.getTxtLogin().getText().isEmpty()) || (usu.getTxtTele().getText().isEmpty())
-                    || (usu.getPssContrase().getPassword() == null) || (usu.getJdcfechanaci().getDate() == null) || (usu.getCmbrol().getSelectedItem().equals("Seleccione..."))
-                    || (usu.getCmbSexo().getSelectedItem().equals("Seleccione..."))) {
+            if ((usu.getTldocumento().getText().isEmpty()) || (usu.getjComboxTipode().getSelectedItem().equals("Seleccione...")) || (usu.getJtnombre().getText().isEmpty()) || (usu.getJtdirecion().getText().isEmpty())
+                    || (usu.getJtcorreo().getText().isEmpty()) || (usu.getJtlogin().getText().isEmpty()) || (usu.getjTefno().getText().isEmpty())
+                    || (usu.getjPasswordUSUARIO().getPassword() == null) || (usu.getjDateChooser1().getDate() == null) || (usu.getjTextinsert_login().equals("Seleccione..."))
+                    || (usu.getjComboBox1().getSelectedItem().equals("Seleccione..."))) {
                 JOptionPane.showMessageDialog(null, "Debe ingresar información en todos los campos");
             } else {
                 //Convertimos el dato de los combox al que entiende sql
-                String valorSexo = usu.getCmbSexo().getSelectedItem().toString();
+                String valorSexo = usu.getjComboBox1().getSelectedItem().toString();
                 int sexo = modusuario.llenarCombo("sexo").get(valorSexo);
-                String valorRol = usu.getCmbrol().getSelectedItem().toString();
+                String valorRol = usu.getCbxCargo().toString();
                 int rol = modusuario.llenarCombo("rol").get(valorRol);
 
                 // seleccion de fecha, cambia al formato de fecha al que entiende sql
-                java.util.Date fec = usu.getJdcfechanaci().getDate();
+                java.util.Date fec = usu.getjDateChooser1().getDate();
                 long fe = fec.getTime();
                 java.sql.Date fecha = new Date(fe);
 
                 //Contraseña
-                char[] contra = usu.getPssContrase().getPassword();
+                char[] contra = usu.getjPasswordUSUARIO().getPassword();
                 String contrasena = String.valueOf(contra);
 
-                modusuario.setDoc(Integer.parseInt(usu.getTxtDocumento().getText()));
-                modusuario.setTipo_doc(usu.getCmbtipodocu().getSelectedItem().toString());
-                modusuario.setNom(usu.getTxtNombre().getText());
-                modusuario.setDire(usu.getTxtDire().getText());
-                modusuario.setCorreo(usu.getTxtCorreo().getText());
-                modusuario.setTele(usu.getTxtTele().getText());
-                modusuario.setLog(usu.getTxtLogin().getText());
+                modusuario.setDoc(Integer.parseInt(usu.getTldocumento().getText()));
+                modusuario.setTipo_doc(usu.getTldocumento().toString());
+                modusuario.setNom(usu.getJtnombre().getText());
+                modusuario.setDire(usu.getJtnombre().getText());
+                modusuario.setCorreo(usu.getJtcorreo().getText());
+                modusuario.setTele(usu.getjTefno().getText());
+                modusuario.setLog((String) usu.getCbxCargo());
                 modusuario.setFec(fecha);
                 modusuario.setContra(contrasena);
                 modusuario.setSex(sexo);
@@ -104,14 +106,15 @@ public class ControladorUsuario implements ActionListener {
                 
                 ControladorPrincipal prin = new ControladorPrincipal();
 
-                if (usu.getBtnGuardar().getText().equals("Guardar")) {
+                if (usu.getBtnGuardar().getClass().equals("Guardar")) {
                     modusuario.insertarUsuario();
-                    modusuario.limpiar(usu.getUsuarios().getComponents());
+                    modusuario.limpiar(usu.getUsuarios());
                 } else {
                     modusuario.actualizarUsuario();
                     usu.setVisible(false);
-                    prin.setVisible(true);
-                  modusuario.mostrarTablaUsuario(prin.getTbUsuario(), "", "Usuario");
+
+//                    prin.setVisible(true);
+                  modusuario.mostrarTablaUsuario(prin.getUsuario(), "", "Usuario");
 //                    prin.getTpPrincipal().setSelectedIndex(0);
                 }
 
@@ -123,49 +126,49 @@ public class ControladorUsuario implements ActionListener {
 
     void actualizarUsuario(int doc) {
         modusuario.buscarUsuario(doc);
-        usu.getTxtDocumento().setEnabled(false);
-        usu.getTxtLogin().setEnabled(false);
-        usu.getCmbtipodocu().setEnabled(false);
-        usu.getTxtDocumento().setText(String.valueOf(doc));
-        usu.getTxtNombre().setText(modusuario.getNom());
-        usu.getTxtTele().setText(modusuario.getTele());
-        usu.getTxtCorreo().setText(modusuario.getCorreo());
-        usu.getTxtDire().setText(modusuario.getDire());
-        usu.getTxtLogin().setText(modusuario.getLog());
-        usu.getPssContrase().setText(modusuario.getContra());
-        usu.getJdcfechanaci().setDate(modusuario.getFec());
+        usu.getTldocumento().setEnabled(false);
+        usu.getJtlogin().setEnabled(false);
+        usu.getjComboxTipode().setEnabled(false);
+        usu.getTldocumento().setText(String.valueOf(doc));
+        usu.getJtnombre().setText(modusuario.getNom());
+        usu.getjTefno().setText(modusuario.getTele());
+        usu.getJtcorreo().setText(modusuario.getCorreo());
+        usu.getJtdirecion().setText(modusuario.getDire());
+        usu.getJtlogin().setText(modusuario.getLo());
+        usu.getjPasswordUSUARIO().setText(modusuario.getContra());
+        usu.getjDateChooser1().setDate(modusuario.getFec());
 
         //llenar Sexo
         Map<String, Integer> info = modusuario.llenarCombo("sexo");
         for (String sexo : info.keySet()) {
-            usu.getCmbSexo().addItem(sexo);
+            usu.getjComboBox1().addItem(sexo);
         }
         //obtener el valor de la base de datos
         String valoSexo = modusuario.obtenerSeleccion(info, modusuario.getSex());
-        usu.getCmbSexo().setSelectedItem(valoSexo);
+        usu.getjComboBox1().setSelectedItem(valoSexo);
 
         //llenar Rol
         Map<String, Integer> info2 = modusuario.llenarCombo("rol");
         for (String rol : info2.keySet()) {
-            usu.getCmbrol().addItem(rol);
+            usu.getJtsexo().addItem(rol);
         }
 
         //obtener el valor de la base de datos
         String valoRol = modusuario.obtenerSeleccion(info, modusuario.getRol());
-        usu.getCmbrol().setSelectedItem(valoRol);
+        usu.getJtsexo().setSelectedItem(valoRol);
 
         //Llenar tipo de documento
-        usu.getCmbtipodocu().setSelectedItem(modusuario.getTipo_doc());
+        usu.getTldocumento().setSelectionEnd(modusuario.getDoc());
 
         //Cambiar Titulo
         Border borde = BorderFactory.createTitledBorder(null, "Actualizar Usuario",
                 javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION,
                 new java.awt.Font("Yu Gothic UI", 1, 36),
                 new java.awt.Color(204, 0, 204));
-        usu.getUsuarios().setBorder(borde);
+        usu.getUsuarios().equals(borde);
         prin.setVisible(false);
         usu.setLocationRelativeTo(null);
-        usu.getBtnGuardar().setText("Actualizar");
+        usu.getBtnGuardar().equals("Actualizar");
         usu.setVisible(true);
 
     }
@@ -180,4 +183,10 @@ public class ControladorUsuario implements ActionListener {
         }
      }
 
-}
+    void ControladorUsuarios() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    
+    }
+

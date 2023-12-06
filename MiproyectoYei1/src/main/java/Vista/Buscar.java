@@ -4,11 +4,64 @@
  */
 package Vista;
 
-/**
- *
- * @author sena
- */
+import java.util.Objects;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTable;
+
 public class Buscar extends javax.swing.JFrame {
+
+    public JPanel getJpanelBuscarUsuario() {
+        return jpanelBuscarUsuario;
+    }
+
+    public JTable getJbBuscar() {
+        return jbBuscar;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 61 * hash + Objects.hashCode(this.jtBuscarcliente);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Buscar other = (Buscar) obj;
+        return true;
+    }
+
+    public void setJbBuscar(JTable jbBuscar) {
+        this.jbBuscar = jbBuscar;
+    }
+
+    public void setJpanelBuscarUsuario(JPanel jpanelBuscarUsuario) {
+        this.jpanelBuscarUsuario = jpanelBuscarUsuario;
+    }
+
+    public JButton getJtBuscarcliente() {
+        return jtBuscarcliente;
+    }
+
+    @Override
+    public String toString() {
+        return "Buscar{" + "Buscar=" + Buscar + ", jScrollPane1=" + jScrollPane1 + ", jbBuscar=" + jbBuscar + ", jpanelBuscarUsuario=" + jpanelBuscarUsuario + ", jtBuscarcliente=" + jtBuscarcliente + '}';
+    }
+
+    public void setJtBuscarcliente(JButton jtBuscarcliente) {
+        this.jtBuscarcliente = jtBuscarcliente;
+    }
 
     /**
      * Creates new form Buscar
@@ -16,6 +69,24 @@ public class Buscar extends javax.swing.JFrame {
     public Buscar() {
         initComponents();
     }
+
+    public JLabel getBuscar() {
+        return Buscar;
+    }
+
+    public JTable getTbbuscar() {
+        return jbBuscar;
+    }
+
+    public void setTbbuscar(JTable tbbuscar) {
+        this.jbBuscar = tbbuscar;
+    }
+
+    public void setBuscar(JLabel Buscar) {
+        this.Buscar = Buscar;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,8 +99,9 @@ public class Buscar extends javax.swing.JFrame {
 
         jpanelBuscarUsuario = new javax.swing.JPanel();
         Buscar = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        jtBuscarcliente = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jbBuscar = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -39,9 +111,27 @@ public class Buscar extends javax.swing.JFrame {
         Buscar.setForeground(new java.awt.Color(0, 0, 255));
         Buscar.setText("Buscar");
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 255));
-        jButton1.setText("Buscar");
+        jtBuscarcliente.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jtBuscarcliente.setForeground(new java.awt.Color(0, 0, 255));
+        jtBuscarcliente.setText("BuscarCliente");
+        jtBuscarcliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtBuscarclienteActionPerformed(evt);
+            }
+        });
+
+        jbBuscar.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(jbBuscar);
 
         javax.swing.GroupLayout jpanelBuscarUsuarioLayout = new javax.swing.GroupLayout(jpanelBuscarUsuario);
         jpanelBuscarUsuario.setLayout(jpanelBuscarUsuarioLayout);
@@ -51,24 +141,25 @@ public class Buscar extends javax.swing.JFrame {
                 .addGroup(jpanelBuscarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpanelBuscarUsuarioLayout.createSequentialGroup()
                         .addGap(109, 109, 109)
-                        .addComponent(Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jpanelBuscarUsuarioLayout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(112, Short.MAX_VALUE))
+                        .addGap(53, 53, 53)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpanelBuscarUsuarioLayout.createSequentialGroup()
+                        .addGap(293, 293, 293)
+                        .addComponent(jtBuscarcliente, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(194, Short.MAX_VALUE))
         );
         jpanelBuscarUsuarioLayout.setVerticalGroup(
             jpanelBuscarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpanelBuscarUsuarioLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addGroup(jpanelBuscarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(58, 58, 58)
-                .addComponent(jButton1)
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addComponent(Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jtBuscarcliente)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(91, 91, 91))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -91,45 +182,30 @@ public class Buscar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jtBuscarclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtBuscarclienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtBuscarclienteActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Buscar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Buscar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Buscar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Buscar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Buscar().setVisible(true);
-            }
-        });
-    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Buscar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jbBuscar;
     private javax.swing.JPanel jpanelBuscarUsuario;
+    private javax.swing.JButton jtBuscarcliente;
     // End of variables declaration//GEN-END:variables
+
+    public JPanel getJTablaBuscarusuario() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public Object getJTablaBuscarcliente() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    
 }

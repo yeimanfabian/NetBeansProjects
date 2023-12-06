@@ -13,6 +13,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 
 public class modeloUsuario {
 
@@ -115,10 +116,11 @@ public class modeloUsuario {
         } catch (SQLException e) {
         }
         return llenar_combo;
-        
+
     }
-    
-        public void iniciarconexion (){;
+
+    @SuppressWarnings("empty-statement")
+    public void iniciarconexion() {;
         Conexion cone = new Conexion();
         Connection cn = cone.iniciarConexion();
         String sql = "call ins_usuario (?,?,?,?,?,?,?,?,?,?)";
@@ -143,10 +145,10 @@ public class modeloUsuario {
 
         }
         cone.cerrarConexion();
-    {
+    }
 
-         public void  ModeloUsuario (int valor) { 
-       
+    public void modeloUsuario(int valor) {
+
         Conexion conect = new Conexion();
         Connection co = conect.iniciarConexion();
         String sql = "call buscar_usuario(" + valor + ")";
@@ -169,7 +171,6 @@ public class modeloUsuario {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
         }
 
     }
@@ -195,12 +196,12 @@ public class modeloUsuario {
             ps.setInt(1, getDoc());
             ps.setString(2, getNom());
             ps.setInt(3, getRol());
-            ps.setString(4, getTele());
-            ps.setString(5, getCorreo());
+            ps.setString(4, getTec());
+            ps.setString(5, getCor());
             ps.setInt(6, getSex());
-            ps.setString(7, getDire());
+            ps.setString(7, getDir());
             ps.setDate(8, getFec());
-            ps.setString(9, getContra());
+            ps.setString(9, getCl());
             ps.executeUpdate();
 
             JOptionPane.showMessageDialog(null, "Información Actualizada");
@@ -223,60 +224,80 @@ public class modeloUsuario {
             ps.executeUpdate();
             Icon elimina = new ImageIcon(getClass().getResource("/img/basura.png"));
             JOptionPane.showMessageDialog(null, "Registro Eliminado", "Eliminar Usuario", JOptionPane.PLAIN_MESSAGE, (Icon) elimina);
-//            JOptionPane.showMessageDialog(null, "¿Desea Eliminar el Registro?");
+            JOptionPane.showMessageDialog(null, "¿Desea Eliminar el Registro?");
             con.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
         conect.cerrarConexion();
+        
+        
+   
+  
     }
 
-    private void setTipo_doc(String string) {
+    public void setTipo_doc(String toString) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    private void setTele(String string) {
+    public void setDire(String text) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    private void setCorreo(String string) {
+    public void setCorreo(String text) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    private void setDire(String string) {
+    public void setLog(String string) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    private void setLog(String string) {
+    public void setTele(String text) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    private void setContra(String string) {
+    public void setContra(String contrasena) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    private String getTele() {
+    public void insertarUsuario() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    private String getDire() {
+    public void limpiar(Object usuarios) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    private String getCorreo() {
+    public void mostrarTablaUsuario(JPanel tbUsuarios, String string, String usuario) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    private String getContra() {
+    public String getTele() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public String getCorreo() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public String getContra() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public String getDire() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public void buscarUsuario(int doc) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public void mostrarTablaProducto(JTable tbpro, String text, String producto) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public void MostrarTablaUsuarios(JPanel jpUsuario, String string, String usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public void mostrarTablaUsuario(JPanel jpUsuario, String string, String usuario) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

@@ -1,7 +1,7 @@
 package Controlador;
 
 import Modelo.ModeloCliente;
-import Vista.Nuevo_Cliente;
+import Vista.NuevoCli;
 import Vista.Principal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,12 +14,12 @@ import javax.swing.JOptionPane;
 
 public class ControladorCliente implements ActionListener {
 
-    Nuevo_Cliente cli = new Nuevo_Cliente();
+    NuevoCli cli = new NuevoCli();
     Principal prin = new Principal();
     ModeloCliente modcliente = new ModeloCliente();
 
     public ControladorCliente() {
-        cli.getBtnguardarcli().addActionListener(this);
+        cli.getBtnguardar().addActionListener(this);
         cli.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         cli.addWindowListener(new WindowAdapter() {
             public void windowClosed(WindowEvent e) {
@@ -36,46 +36,46 @@ public class ControladorCliente implements ActionListener {
         cli.setVisible(true);
 
         //lleno combo box sexo
-        cli.getCmbgenecli().addItem("Seleccione...");
+        cli.getCmbgenecli().equals("Seleccione...");
         Map<String, Integer> combosexo = modcliente.llenarCombo("sexo");
         for (String sexo : combosexo.keySet()) {
-            cli.getCmbgenecli().addItem(sexo);
+            cli.getCmbgenecli().equals(sexo);
         }
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
           
-        if (e.getSource().equals(cli.getBtnguardarcli())) {
+        if (e.getSource().equals(cli.getBtnguardar())) {
             //validar campos vacios
-            if ((cli.getTxtdocucli().getText().isEmpty()) ||(cli.getCmbtipodocu_cli().getSelectedItem().equals("Seleccione..."))|| (cli.getTxtnomcli().getText().isEmpty()) || (cli.getTxtdirecli().getText().isEmpty())
-                    || (cli.getTxtcorrcli().getText().isEmpty()) || (cli.getTxttelecli().getText().isEmpty())|| (cli.getJdcfechacli().getDate() == null) 
-                    || (cli.getCmbgenecli().getSelectedItem().equals("Seleccione..."))) {
+            if ((cli.getJtdocumento().getText().isEmpty()) ||(cli.getJttipodedocumento().getText().equals("Seleccione..."))|| (cli.getJtnombre().getText().isEmpty()) || (cli.getJtdirecion().getText().isEmpty())
+                    || (cli.getJtcorreo().getText().isEmpty()) || (cli.getJttelefono().getText().isEmpty())|| (cli.getJtfecha()== null) 
+                    || (cli.getJtcombox().getClass().equals("Seleccione..."))) {
                 JOptionPane.showMessageDialog(null, "Debe ingresar información en todos los campos");
             } else {
                 //Convertimos el dato de los combox al que entiende sql
-                String valorSexo = cli.getCmbgenecli().getSelectedItem().toString();
+                String valorSexo = cli.getJtcombox().getClass().toString();
                 int sexo = modcliente.llenarCombo("sexo").get(valorSexo);
                 
                 // seleccion de fecha, cambia al formato de fecha al que entiende sql
-                java.util.Date fec = cli.getJdcfechacli().getDate();
+                java.util.Date fec = cli.getjDateChooser1().getDate();
                 long fe = fec.getTime();
                 java.sql.Date fecha = new Date(fe);
       
-                modcliente.setDoc(Integer.parseInt(cli.getTxtdocucli().getText()));
-                modcliente.setTipo_doc(cli.getCmbtipodocu_cli().getSelectedItem().toString());
-                modcliente.setNom(cli.getTxtnomcli().getText());
-                modcliente.setTele(cli.getTxttelecli().getText());
-                modcliente.setCorreo(cli.getTxtcorrcli().getText());
-                modcliente.setDire(cli.getTxtdirecli().getText());
+                modcliente.setDoc(Integer.parseInt(cli.getJtdocumento().getText()));
+                modcliente.setTipo_doc(cli.getJttipodedocumento().getText().toString());
+                modcliente.setNom(cli.getJtnombre().getText());
+                modcliente.setTele(cli.getJttelefono().getText());
+                modcliente.setCorreo(cli.getJtcorreo().getText());
+                modcliente.setDire(cli.getJtdirecion().getText());
                 modcliente.setSex(sexo);
                 modcliente.setFec(fecha);
                 modcliente.insertarCliente();
-                modcliente.limpiar(cli.getCliente().getComponents());
+                modcliente.limpiar(cli.getJpcliente().getComponents());
                 
-                if (cli.getBtnguardarcli().getText().equals("Guardar")) {
+                if (cli.getBtnguardar().getText().equals("Guardar")) {
                     modcliente.insertarCliente();
-                    modcliente.limpiar(cli.getCliente().getComponents());
+                    modcliente.limpiar(cli.getJpcliente().getComponents());
                 } else {
 //                    modcliente.actualizarUsuario();
 //                    usu.setVisible(false);
