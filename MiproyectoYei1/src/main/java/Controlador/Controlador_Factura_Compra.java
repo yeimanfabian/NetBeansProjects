@@ -11,6 +11,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -32,7 +35,11 @@ public class Controlador_Factura_Compra implements ActionListener {
             @Override
             public void windowClosed(WindowEvent e) {
                 ControladorPrincipal princ = new ControladorPrincipal();
-                princ.iniciarPrincipal(4);
+                try {
+                    princ.iniciarPrincipal(4);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Controlador_Factura_Compra.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -81,7 +88,7 @@ public class Controlador_Factura_Compra implements ActionListener {
             buscar.getBuscar().setText("");
             factnuev.setVisible(false);
             buscar.setLocationRelativeTo(null);
-            modprovee.mostrarTablaProveedor(buscar.getJTablaBuscarusuario(), "", "Nueva Factura");
+            modprovee.mostrarTablaProveedor(buscar.getJpanelBuscarUsuario(), "", "Nueva Factura");
             buscar.setVisible(true);
             Border borde = BorderFactory.createTitledBorder(null, "Buscar Usuario",
                     javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION,

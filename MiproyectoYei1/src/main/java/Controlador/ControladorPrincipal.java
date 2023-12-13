@@ -15,6 +15,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ComponentListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -57,7 +60,7 @@ public class ControladorPrincipal implements ActionListener, ChangeListener, Doc
         
     }
 
-    public void iniciarPrincipal(int valor) {
+    public void iniciarPrincipal(int valor) throws SQLException {
         prin.setLocationRelativeTo(null);//Centra la ventana
         prin.setTitle("Principal");//Le da titulo a la ventana
         prin.setExtendedState(JFrame.MAXIMIZED_BOTH);//Maximiza la ventana
@@ -72,7 +75,7 @@ public class ControladorPrincipal implements ActionListener, ChangeListener, Doc
     }
 
     public void gestionUsuario() {
-      modusu.MostrarTablaUsuarios(prin.getJpUsuario(), "", "Usuario");
+      modusu.mostrarTablaUsuario(prin.getJpUsuario(), "", "Usuario");
 
         prin.getTpPrincipal().equals(new ChangeListener() {
 
@@ -104,7 +107,11 @@ public class ControladorPrincipal implements ActionListener, ChangeListener, Doc
                     controusu.actualizarUsuario(modusu.getDoc());
                 }
                 if (colum == 10) {
-                    controusu.eliminarUsuario(modusu.getDoc());
+                    try {
+                        controusu.eliminarUsuario(modusu.getDoc());
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ControladorPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     JOptionPane.showMessageDialog(null, "Registro Eliminado");
                     modusu.mostrarTablaUsuario(prin.getJpUsuario(), "", "Usuario");
                 }
@@ -112,7 +119,7 @@ public class ControladorPrincipal implements ActionListener, ChangeListener, Doc
         });
     }
 
-    public void gestionCliente() {
+    public void gestionCliente() throws SQLException {
                 modocli.mostrarTablaCliente(prin.getJtcliente(), "", "Cliente");
 
     }
@@ -143,7 +150,11 @@ public class ControladorPrincipal implements ActionListener, ChangeListener, Doc
         }
         if (e.getSource().equals(prin.getBtnCliente())) {
             prin.setVisible(false);
-            controcli.controlCliente();
+            try {
+                controcli.controlCliente();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControladorPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         if (e.getSource().equals(prin.getBtnProvedor())) {
             prin.setVisible(false);
@@ -176,7 +187,11 @@ public class ControladorPrincipal implements ActionListener, ChangeListener, Doc
             gestionUsuario();
         }
         if (seleccionar == 1) {
-            gestionCliente();
+            try {
+                gestionCliente();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControladorPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         if (seleccionar == 2) {
             gestionProveedor();
@@ -190,22 +205,39 @@ public class ControladorPrincipal implements ActionListener, ChangeListener, Doc
         if (seleccionar == 5) {
             gestionVenta();
         }
+        
     }
 
    @Override
     public void insertUpdate(DocumentEvent e) {
         modusu.mostrarTablaUsuario(prin.getJpUsuario(), prin.getBtnUsuario().getText(), "Usuario");
-        modocli.mostrarTablaCliente(prin.getJtcliente(), prin.getBtnCliente(). getText (), "Cliente");
+        try {
+            modocli.mostrarTablaCliente(prin.getJtcliente(), prin.getBtnCliente(). getText (), "Cliente");
+        } catch (SQLException ex) {
+            Logger.getLogger(ControladorPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
         modoprove.mostrarTablaProveedor(prin.getBtnProvedor(), prin.getBtnProveeedor(), "Proveedor");
-        modusu.mostrarTablaProducto(prin.getTbpro(), prin.getBtnProducto().getText(), "Producto");
+        try {
+            modoproduc.mostrarTablaProducto(prin.getBtnProductos(), prin.getBtnProducto().getText(), "Producto");
+        } catch (SQLException ex) {
+            Logger.getLogger(ControladorPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
     public void removeUpdate(DocumentEvent e) {
         modusu.mostrarTablaUsuario(prin.getJpUsuario(), prin.getBtnUsuario().getText(), "Usuario");
-        modocli.mostrarTablaCliente(prin.getJtcliente(), prin.getBtnCliente().getText(), "Cliente");
+        try {
+            modocli.mostrarTablaCliente(prin.getJtcliente(), prin.getBtnCliente().getText(), "Cliente");
+        } catch (SQLException ex) {
+            Logger.getLogger(ControladorPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
         modoprove.mostrarTablaProveedor(prin.getBtnProvedor(), prin.getBtnProveeedor(), "Proveedor");
-        modoproduc.mostrarTablaProducto(prin.getBtnProductos(), prin.getBtnProducto().getText(), "Producto");
+        try {
+            modoproduc.mostrarTablaProducto(prin.getBtnProductos(), prin.getBtnProducto().getText(), "Producto");
+        } catch (SQLException ex) {
+            Logger.getLogger(ControladorPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 
@@ -213,10 +245,20 @@ public class ControladorPrincipal implements ActionListener, ChangeListener, Doc
 
     public void changedUpdate(DocumentEvent e) {
     modusu.mostrarTablaUsuario(prin.getJpUsuario(), prin.getBtnUsuario().getText(), "Usuario");
- modocli.mostrarTablaCliente(prin.getJtcliente(), prin.getBtnCliente().getText(), "Cliente");
+        try {
+            modocli.mostrarTablaCliente(prin.getJtcliente(), prin.getBtnCliente().getText(), "Cliente");
+        } catch (SQLException ex) {
+            Logger.getLogger(ControladorPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
         modoprove.mostrarTablaProveedor(prin.getBtnProvedor(), prin.getBtnProveeedor(), "Proveedor");
-        modoproduc.mostrarTablaProducto(prin.getBtnProductos(), prin.getBtnProducto().getText(), "Producto");
+        try {
+            modoproduc.mostrarTablaProducto(prin.getBtnProductos(), prin.getBtnProducto().getText(), "Producto");
+        } catch (SQLException ex) {
+            Logger.getLogger(ControladorPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
+   
+    
     }
 
     JPanel getUsuario() {

@@ -9,12 +9,13 @@ import java.sql.SQLException;
 public class ModeloLogin {
     
     Conexion conect = new Conexion();
-    Connection cn = conect.iniciarConexion();
+    Connection cn;
     
     
     String usu, contra ;
      
-    public ModeloLogin() {
+    public ModeloLogin() throws SQLException {
+        this.cn = conect.inciarConnexion();
     }
 
     public String getUsu() {
@@ -45,7 +46,7 @@ public class ModeloLogin {
             }
             if(result==true){
                 cn.close();
-            conect.cerrarConexion();
+            conect.CerrarConexion();
             }
             
         } catch (SQLException e) {

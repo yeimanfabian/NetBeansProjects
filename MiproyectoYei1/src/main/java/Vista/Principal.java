@@ -24,6 +24,7 @@ public class Principal extends javax.swing.JFrame {
     private static final Logger LOG = Logger.getLogger(Principal.class.getName());
 
     public JLabel getjLabel1() {
+    
         return jLabel1;
         
     }
@@ -42,6 +43,11 @@ public class Principal extends javax.swing.JFrame {
 
     public JTable getTBusuario() {
         return TBusuario;
+    }
+
+    @Override
+    public String toString() {
+        return "Principal{" + "TBcliente=" + TBcliente + ", TBusuario=" + TBusuario + ", Tbpro=" + Tbpro + ", btnCliente=" + btnCliente + ", btnFactura=" + btnFactura + ", btnNueva=" + btnNueva + ", btnProducto=" + btnProducto + ", btnProvedor=" + btnProvedor + ", btnUsuario=" + btnUsuario + ", jLabel1=" + jLabel1 + ", jPanel1=" + jPanel1 + ", jScrollPane1=" + jScrollPane1 + ", jScrollPane2=" + jScrollPane2 + ", jScrollPane3=" + jScrollPane3 + ", jScrollPane4=" + jScrollPane4 + ", jScrollPane5=" + jScrollPane5 + ", jScrollPane6=" + jScrollPane6 + ", jScrollPane7=" + jScrollPane7 + ", jTable1=" + jTable1 + ", jpCliente=" + jpCliente + ", jpEmpresa=" + jpEmpresa + ", jpFactura=" + jpFactura + ", jpProducto=" + jpProducto + ", jpProveedor=" + jpProveedor + ", jpUsuario=" + jpUsuario + ", jtPrincipal=" + jtPrincipal + ", tablventa=" + tablventa + ", tbTienda=" + tbTienda + ", tbUsuario=" + tbUsuario + ", tbtabalfactura=" + tbtabalfactura + '}';
     }
 
     public void setTBusuario(JTable TBusuario) {
@@ -736,7 +742,7 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(32, 32, 32)
                         .addComponent(jpEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
+                        .addGap(14, 14, 14)
                         .addComponent(jtPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 782, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -747,11 +753,11 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jpEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jtPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(40, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );

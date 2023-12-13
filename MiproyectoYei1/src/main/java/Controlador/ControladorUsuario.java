@@ -10,7 +10,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -31,7 +34,11 @@ public class ControladorUsuario implements ActionListener {
             @Override
             public void windowClosed(WindowEvent e) {
                 ControladorPrincipal princ = new ControladorPrincipal();
-                princ.iniciarPrincipal(0);
+                try {
+                    princ.iniciarPrincipal(0);
+                } catch (SQLException ex) {
+                    Logger.getLogger(ControladorUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -93,24 +100,31 @@ public class ControladorUsuario implements ActionListener {
                 String contrasena = String.valueOf(contra);
 
                 modusuario.setDoc(Integer.parseInt(usu.getTldocumento().getText()));
-                modusuario.setTipo_doc(usu.getTldocumento().toString());
                 modusuario.setNom(usu.getJtnombre().getText());
-                modusuario.setDire(usu.getJtnombre().getText());
-                modusuario.setCorreo(usu.getJtcorreo().getText());
-                modusuario.setTele(usu.getjTefno().getText());
-                modusuario.setLog((String) usu.getCbxCargo());
+                modusuario.setDir(usu.getJtnombre().getText());
+                modusuario.setCor(usu.getJtcorreo().getText());
+                modusuario.setTec(usu.getjTefno().getText());
+                modusuario.setLo((String) usu.getCbxCargo());
                 modusuario.setFec(fecha);
-                modusuario.setContra(contrasena);
+                modusuario.setCl(contrasena);
                 modusuario.setSex(sexo);
                 modusuario.setRol(rol);
                 
                 ControladorPrincipal prin = new ControladorPrincipal();
 
                 if (usu.getBtnGuardar().getClass().equals("Guardar")) {
-                    modusuario.insertarUsuario();
+                    try {
+                        modusuario.actualizarUsuario();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ControladorUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     modusuario.limpiar(usu.getUsuarios());
                 } else {
-                    modusuario.actualizarUsuario();
+                    try {
+                        modusuario.actualizarUsuario();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ControladorUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     usu.setVisible(false);
 
 //                    prin.setVisible(true);
@@ -125,17 +139,17 @@ public class ControladorUsuario implements ActionListener {
 //Actualizar Usuario
 
     void actualizarUsuario(int doc) {
-        modusuario.buscarUsuario(doc);
+        modusuario.Buscar(doc);
         usu.getTldocumento().setEnabled(false);
         usu.getJtlogin().setEnabled(false);
         usu.getjComboxTipode().setEnabled(false);
         usu.getTldocumento().setText(String.valueOf(doc));
         usu.getJtnombre().setText(modusuario.getNom());
-        usu.getjTefno().setText(modusuario.getTele());
-        usu.getJtcorreo().setText(modusuario.getCorreo());
-        usu.getJtdirecion().setText(modusuario.getDire());
+        usu.getjTefno().setText(modusuario.getTec());
+        usu.getJtcorreo().setText(modusuario.getCor());
+        usu.getJtdirecion().setText(modusuario.getDir());
         usu.getJtlogin().setText(modusuario.getLo());
-        usu.getjPasswordUSUARIO().setText(modusuario.getContra());
+        usu.getjPasswordUSUARIO().setText(modusuario.getCl());
         usu.getjDateChooser1().setDate(modusuario.getFec());
 
         //llenar Sexo
@@ -174,7 +188,7 @@ public class ControladorUsuario implements ActionListener {
     }
 //Eliminar Usuario
 
-    void eliminarUsuario(int doc) {
+    void eliminarUsuario(int doc) throws SQLException {
         int resp = JOptionPane.showConfirmDialog(null, "¿Desea eliminar al usuario? \n" + doc,
                  "Eliminar Usuario", JOptionPane.YES_OPTION);
         if (resp == JOptionPane.YES_OPTION) {
@@ -187,6 +201,12 @@ public class ControladorUsuario implements ActionListener {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    
     }
+
+    
+
+    
+
+    
+    
 

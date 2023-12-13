@@ -93,9 +93,9 @@ public class ModeloProveeedor {
         this.fec = fec;
     }
  
-    public Map<String, Integer> llenarCombo(String valor) {
+    public Map<String, Integer> llenarCombo(String valor) throws SQLException {
         Conexion conect = new Conexion();
-        Connection co = conect.iniciarConexion();
+        Connection co = conect.inciarConnexion();
 
         String sql = "select * from mostrar_" + valor;
 
@@ -113,9 +113,9 @@ public class ModeloProveeedor {
         return llenar_combo;
     }
     
-         public void actualizarProveedor() {
+         public void actualizarProveedor() throws SQLException {
         Conexion conect = new Conexion();
-        Connection con = conect.iniciarConexion();
+        Connection con = conect.inciarConnexion();
         String sql = "call actualizar_proveedor(?,?,?,?,?,?,?,?)";
 
         try {
@@ -137,13 +137,14 @@ public class ModeloProveeedor {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        conect.cerrarConexion();
+         
+        conect.CerrarConexion();
     }
 
 
-    public void insertarProveedor() {
+    public void insertarProveedor() throws SQLException {
         Conexion conect = new Conexion();
-        Connection co = conect.iniciarConexion();
+        Connection co = conect.inciarConnexion();
         String sql = "Call inst_proveedor(?,?,?,?,?,?,?,?,?)";
         
         
@@ -168,7 +169,7 @@ public class ModeloProveeedor {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al guardar", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        conect.cerrarConexion();
+        conect.CerrarConexion();
     }
     public void limpiar(Component[] panelproveedor){
         for (Object limpiar : panelproveedor) {

@@ -91,9 +91,9 @@ public class ModeloCliente {
         this.fec = fec;
     }
     //Mapa para llenar combo
-    public Map<String, Integer> llenarCombo(String valor) {
+    public Map<String, Integer> llenarCombo(String valor) throws SQLException {
         Conexion conect = new Conexion();
-        Connection co = conect.iniciarConexion();
+        Connection co = conect.inciarConnexion();
 
         String sql = "select * from mostrar_" + valor;
 
@@ -110,9 +110,9 @@ public class ModeloCliente {
         return llenar_combo;
     }
     
-    public void insertarCliente() {
+    public void insertarCliente() throws SQLException {
         Conexion conect = new Conexion();
-        Connection co = conect.iniciarConexion();
+        Connection co = conect.inciarConnexion();
         String sql = "Call inst_cliente(?,?,?,?,?,?,?,?)";
 
         try {
@@ -134,7 +134,7 @@ public class ModeloCliente {
             JOptionPane.showMessageDialog(null, "Error al guardar", "Error", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
         }
-        conect.cerrarConexion();
+        conect.CerrarConexion();
     }
     public void limpiar(Component[] panelcliente){
          for (Object limpiar : panelcliente){
@@ -152,9 +152,9 @@ public class ModeloCliente {
     }
     
     //Creación de la tabla Usuario en la ventana principal 
-    public void mostrarTablaCliente(JTable tabla, String valor, String nompeste) {
+    public void mostrarTablaCliente(JTable tabla, String valor, String nompeste) throws SQLException {
         Conexion conect = new Conexion();
-        Connection co = conect.iniciarConexion();
+        Connection co = conect.inciarConnexion();
 
         //Personalizar Emcabezado
         JTableHeader encabeza = tabla.getTableHeader();
@@ -226,7 +226,7 @@ public class ModeloCliente {
             TableColumn columna = tabla.getColumnModel().getColumn(i);
             columna.setPreferredWidth(ancho[i]);
         }
-        conect.cerrarConexion();
+        conect.CerrarConexion();
     }
      
 }

@@ -9,6 +9,7 @@ import java.util.Objects;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -19,6 +20,22 @@ public class Usuarios extends javax.swing.JFrame {
 
     public JButton getJbncacelar() {
         return lbcancelar;
+    }
+
+    public JLabel getTipodocu() {
+        return Tipodocu;
+    }
+
+    public void setTipodocu(JLabel Tipodocu) {
+        this.Tipodocu = Tipodocu;
+    }
+
+    public JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    public void setjPanel1(JPanel jPanel1) {
+        this.jPanel1 = jPanel1;
     }
 
     @Override
@@ -153,11 +170,11 @@ public class Usuarios extends javax.swing.JFrame {
     }
 
     public JLabel getLbtipodocu() {
-        return lbtipodocu;
+        return Tipodocu;
     }
 
     public void setLbtipodocu(JLabel lbtipodocu) {
-        this.lbtipodocu = lbtipodocu;
+        this.Tipodocu = lbtipodocu;
     }
 
     public JCalendar getjCalendar1() {
@@ -409,7 +426,7 @@ public class Usuarios extends javax.swing.JFrame {
         lbcancelar = new javax.swing.JButton();
         jLabel20 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        lbtipodocu = new javax.swing.JLabel();
+        Tipodocu = new javax.swing.JLabel();
         lbTelefono = new javax.swing.JLabel();
         jTefno = new javax.swing.JTextField();
         jComboxTipode = new javax.swing.JComboBox<>();
@@ -535,9 +552,9 @@ public class Usuarios extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(51, 51, 255));
         jLabel11.setText("Nuevo Usuario");
 
-        lbtipodocu.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lbtipodocu.setForeground(new java.awt.Color(0, 0, 255));
-        lbtipodocu.setText("Tipo de documento");
+        Tipodocu.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Tipodocu.setForeground(new java.awt.Color(0, 0, 255));
+        Tipodocu.setText("Tipo de documento");
 
         lbTelefono.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lbTelefono.setForeground(new java.awt.Color(51, 51, 255));
@@ -556,8 +573,8 @@ public class Usuarios extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(196, 196, 196)
                 .addComponent(lbclave)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnVista, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(229, 229, 229)
+                .addComponent(btnVista, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(23, 23, 23))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(169, 169, 169)
@@ -599,10 +616,12 @@ public class Usuarios extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(lbTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lbtipodocu, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(74, 74, 74)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addGap(5, 5, 5)
+                                            .addComponent(lbTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(Tipodocu))
+                                    .addGap(20, 20, 20)
                                     .addComponent(jComboxTipode, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -671,7 +690,7 @@ public class Usuarios extends javax.swing.JFrame {
                     .addComponent(lbgenerosexo))
                 .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbtipodocu)
+                    .addComponent(Tipodocu)
                     .addComponent(jComboxTipode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -718,16 +737,19 @@ public class Usuarios extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(312, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(550, 550, 550)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addContainerGap(12, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(550, 550, 550)
+                        .addComponent(jLabel6))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         pack();
@@ -767,6 +789,7 @@ public class Usuarios extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Tipodocu;
     private javax.swing.JButton btnVista;
     private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JComboBox<String> jComboxTipode;
@@ -805,7 +828,6 @@ public class Usuarios extends javax.swing.JFrame {
     private javax.swing.JLabel lbgenerosexo;
     private javax.swing.JLabel lblogin;
     private javax.swing.JLabel lbnombre;
-    private javax.swing.JLabel lbtipodocu;
     private javax.swing.JTextField tldocumento;
     // End of variables declaration//GEN-END:variables
 

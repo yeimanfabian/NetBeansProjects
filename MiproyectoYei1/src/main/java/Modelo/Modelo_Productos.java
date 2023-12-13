@@ -90,9 +90,9 @@ public class Modelo_Productos {
     }
 //Insertar Producto
 
-    public void insertarProducto() {
+    public void insertarProducto() throws SQLException {
         Conexion conect = new Conexion();
-        Connection co = conect.iniciarConexion();
+        Connection co = conect.inciarConnexion();
         String instProducto = "call inst_producto(?,?,?,?)";
         try {
             PreparedStatement ps = co.prepareStatement(instProducto);
@@ -122,9 +122,9 @@ public class Modelo_Productos {
     }
 
 
-public void mostrarTablaProducto(JTable tabla, String valor, String nompeste) {
+public void mostrarTablaProducto(JTable tabla, String valor, String nompeste) throws SQLException {
         Conexion conect = new Conexion();
-        Connection co = conect.iniciarConexion();
+        Connection co = conect.inciarConnexion();
 
         //Personalizar Encabezado
         JTableHeader encabeza = tabla.getTableHeader();
@@ -162,6 +162,10 @@ public void mostrarTablaProducto(JTable tabla, String valor, String nompeste) {
     }
 
     public void actualizarProducto() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public void setDoc(int doc) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

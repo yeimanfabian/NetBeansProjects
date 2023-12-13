@@ -80,7 +80,7 @@
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jbimagen" alignment="0" min="-2" pref="102" max="-2" attributes="0"/>
-                      <Component id="jbnombr" alignment="0" min="-2" pref="86" max="-2" attributes="0"/>
+                      <Component id="jtnombre" alignment="0" min="-2" pref="86" max="-2" attributes="0"/>
                       <Component id="jtbdescrp" alignment="0" min="-2" pref="70" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -91,6 +91,7 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jbcontra" min="-2" pref="34" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="tfidescrip" alignment="0" min="-2" pref="139" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -110,7 +111,7 @@
                   <Component id="jbpro" min="-2" pref="33" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jbnombr" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="jtnombre" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                       <Component id="jbnnombre" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
@@ -124,7 +125,10 @@
                           <Component id="jtbimagen" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="jtbdescrp" min="-2" pref="36" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jtbdescrp" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="tfidescrip" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace pref="76" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnguardar" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
@@ -147,7 +151,7 @@
             <Property name="text" type="java.lang.String" value="Nuevo  Producto"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jbnombr">
+        <Component class="javax.swing.JLabel" name="jtnombre">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="1"/>
@@ -218,6 +222,8 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btncancelarActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="tfidescrip">
         </Component>
       </SubComponents>
     </Container>

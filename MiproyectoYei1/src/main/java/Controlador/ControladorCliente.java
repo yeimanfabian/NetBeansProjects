@@ -8,7 +8,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -24,12 +27,16 @@ public class ControladorCliente implements ActionListener {
         cli.addWindowListener(new WindowAdapter() {
             public void windowClosed(WindowEvent e) {
                 ControladorPrincipal princ = new ControladorPrincipal();
-                princ.iniciarPrincipal(0);
+                try {
+                    princ.iniciarPrincipal(0);
+                } catch (SQLException ex) {
+                    Logger.getLogger(ControladorCliente.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
-    public void controlCliente(){
+    public void controlCliente() throws SQLException{
         prin.setVisible(false);
         cli.setLocationRelativeTo(null);
         cli.setTitle("Nuevo Cliente");
@@ -55,7 +62,12 @@ public class ControladorCliente implements ActionListener {
             } else {
                 //Convertimos el dato de los combox al que entiende sql
                 String valorSexo = cli.getJtcombox().getClass().toString();
-                int sexo = modcliente.llenarCombo("sexo").get(valorSexo);
+                int sexo = 0;
+                try {
+                    sexo = modcliente.llenarCombo("sexo").get(valorSexo);
+                } catch (SQLException ex) {
+                    Logger.getLogger(ControladorCliente.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 
                 // seleccion de fecha, cambia al formato de fecha al que entiende sql
                 java.util.Date fec = cli.getjDateChooser1().getDate();
@@ -70,18 +82,30 @@ public class ControladorCliente implements ActionListener {
                 modcliente.setDire(cli.getJtdirecion().getText());
                 modcliente.setSex(sexo);
                 modcliente.setFec(fecha);
-                modcliente.insertarCliente();
+                try {
+                    modcliente.insertarCliente();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ControladorCliente.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 modcliente.limpiar(cli.getJpcliente().getComponents());
                 
                 if (cli.getBtnguardar().getText().equals("Guardar")) {
-                    modcliente.insertarCliente();
+                    try {
+                        modcliente.insertarCliente();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ControladorCliente.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     modcliente.limpiar(cli.getJpcliente().getComponents());
                 } else {
-//                    modcliente.actualizarUsuario();
+                    try {
+                        //                    modcliente.actualizarUsuario();
 //                    usu.setVisible(false);
 //                    prin.setVisible(true);
-                    modcliente.mostrarTablaCliente(prin.getJtcliente(), "", "Cliente");
+modcliente.mostrarTablaCliente(prin.getJtcliente(), "", "Cliente");
 //                    prin.getTpPrincipal().setSelectedIndex(0);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ControladorCliente.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
             }
         }

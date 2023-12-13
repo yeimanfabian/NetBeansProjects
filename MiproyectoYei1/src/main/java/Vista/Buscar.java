@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 
 public class Buscar extends javax.swing.JFrame {
 
@@ -16,14 +17,30 @@ public class Buscar extends javax.swing.JFrame {
         return jpanelBuscarUsuario;
     }
 
+    public JTextField getTbBuscarCli() {
+        return tbBuscarCli;
+    }
+
+    public void setTbBuscarCli(JTextField tbBuscarCli) {
+        this.tbBuscarCli = tbBuscarCli;
+    }
+
     public JTable getJbBuscar() {
-        return jbBuscar;
+        return jtTablebuscarcli;
+    }
+
+    public JTable getJtTablebuscarcli() {
+        return jtTablebuscarcli;
+    }
+
+    public void setJtTablebuscarcli(JTable jtTablebuscarcli) {
+        this.jtTablebuscarcli = jtTablebuscarcli;
     }
 
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 61 * hash + Objects.hashCode(this.jtBuscarcliente);
+        hash = 61 * hash + Objects.hashCode(this.jtTablebuscarcli);
         return hash;
     }
 
@@ -43,24 +60,24 @@ public class Buscar extends javax.swing.JFrame {
     }
 
     public void setJbBuscar(JTable jbBuscar) {
-        this.jbBuscar = jbBuscar;
+        this.jtTablebuscarcli = jbBuscar;
     }
 
     public void setJpanelBuscarUsuario(JPanel jpanelBuscarUsuario) {
         this.jpanelBuscarUsuario = jpanelBuscarUsuario;
     }
 
-    public JButton getJtBuscarcliente() {
-        return jtBuscarcliente;
+    public JTable getJtBuscarcliente() {
+        return jtTablebuscarcli;
     }
 
     @Override
     public String toString() {
-        return "Buscar{" + "Buscar=" + Buscar + ", jScrollPane1=" + jScrollPane1 + ", jbBuscar=" + jbBuscar + ", jpanelBuscarUsuario=" + jpanelBuscarUsuario + ", jtBuscarcliente=" + jtBuscarcliente + '}';
+        return "Buscar{" + "Buscar=" + Buscar + ", jScrollPane1=" + jScrollPane1 + ", jbBuscar=" + jtTablebuscarcli + ", jpanelBuscarUsuario=" + jpanelBuscarUsuario + ", jtBuscarcliente=" + jtTablebuscarcli + '}';
     }
 
     public void setJtBuscarcliente(JButton jtBuscarcliente) {
-        this.jtBuscarcliente = jtBuscarcliente;
+        this.jtTablebuscarcli = jtTablebuscarcli;
     }
 
     /**
@@ -75,11 +92,11 @@ public class Buscar extends javax.swing.JFrame {
     }
 
     public JTable getTbbuscar() {
-        return jbBuscar;
+        return jtTablebuscarcli;
     }
 
     public void setTbbuscar(JTable tbbuscar) {
-        this.jbBuscar = tbbuscar;
+        this.jtTablebuscarcli = tbbuscar;
     }
 
     public void setBuscar(JLabel Buscar) {
@@ -99,9 +116,9 @@ public class Buscar extends javax.swing.JFrame {
 
         jpanelBuscarUsuario = new javax.swing.JPanel();
         Buscar = new javax.swing.JLabel();
-        jtBuscarcliente = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jbBuscar = new javax.swing.JTable();
+        jtTablebuscarcli = new javax.swing.JTable();
+        tbBuscarCli = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -111,16 +128,7 @@ public class Buscar extends javax.swing.JFrame {
         Buscar.setForeground(new java.awt.Color(0, 0, 255));
         Buscar.setText("Buscar");
 
-        jtBuscarcliente.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jtBuscarcliente.setForeground(new java.awt.Color(0, 0, 255));
-        jtBuscarcliente.setText("BuscarCliente");
-        jtBuscarcliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtBuscarclienteActionPerformed(evt);
-            }
-        });
-
-        jbBuscar.setModel(new javax.swing.table.DefaultTableModel(
+        jtTablebuscarcli.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -131,7 +139,11 @@ public class Buscar extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(jbBuscar);
+        jScrollPane1.setViewportView(jtTablebuscarcli);
+
+        tbBuscarCli.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        tbBuscarCli.setForeground(new java.awt.Color(51, 51, 255));
+        tbBuscarCli.setText("Buscar Cliente");
 
         javax.swing.GroupLayout jpanelBuscarUsuarioLayout = new javax.swing.GroupLayout(jpanelBuscarUsuario);
         jpanelBuscarUsuario.setLayout(jpanelBuscarUsuarioLayout);
@@ -141,25 +153,28 @@ public class Buscar extends javax.swing.JFrame {
                 .addGroup(jpanelBuscarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpanelBuscarUsuarioLayout.createSequentialGroup()
                         .addGap(109, 109, 109)
-                        .addComponent(Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(105, 105, 105)
+                        .addComponent(tbBuscarCli, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jpanelBuscarUsuarioLayout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jpanelBuscarUsuarioLayout.createSequentialGroup()
-                        .addGap(293, 293, 293)
-                        .addComponent(jtBuscarcliente, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(194, Short.MAX_VALUE))
+                        .addGap(78, 78, 78)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
         jpanelBuscarUsuarioLayout.setVerticalGroup(
             jpanelBuscarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpanelBuscarUsuarioLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jtBuscarcliente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(91, 91, 91))
+                .addGroup(jpanelBuscarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpanelBuscarUsuarioLayout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jpanelBuscarUsuarioLayout.createSequentialGroup()
+                        .addContainerGap(59, Short.MAX_VALUE)
+                        .addComponent(tbBuscarCli, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(222, 222, 222)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -167,24 +182,20 @@ public class Buscar extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addContainerGap()
                 .addComponent(jpanelBuscarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(137, 137, 137))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jpanelBuscarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(33, 33, 33))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jtBuscarclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtBuscarclienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtBuscarclienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -194,18 +205,11 @@ public class Buscar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Buscar;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jbBuscar;
     private javax.swing.JPanel jpanelBuscarUsuario;
-    private javax.swing.JButton jtBuscarcliente;
+    private javax.swing.JTable jtTablebuscarcli;
+    private javax.swing.JTextField tbBuscarCli;
     // End of variables declaration//GEN-END:variables
 
-    public JPanel getJTablaBuscarusuario() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public Object getJTablaBuscarcliente() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
+   
     
 }

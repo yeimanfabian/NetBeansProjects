@@ -1,20 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package Vista;
 
 import java.util.Objects;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-/**
- *
- * @author sena
- */
+
+
 public class Nuevo_Productos extends javax.swing.JFrame {
 
     public JButton getJbcontra() {
@@ -57,7 +53,7 @@ public class Nuevo_Productos extends javax.swing.JFrame {
         if (!Objects.equals(this.jbnnombre, other.jbnnombre)) {
             return false;
         }
-        if (!Objects.equals(this.jbnombr, other.jbnombr)) {
+        if (!Objects.equals(this.jtnombre, other.jtnombre)) {
             return false;
         }
         if (!Objects.equals(this.jbpro, other.jbpro)) {
@@ -76,16 +72,32 @@ public class Nuevo_Productos extends javax.swing.JFrame {
         return jbimagen;
     }
 
+    public JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    public void setjPanel1(JPanel jPanel1) {
+        this.jPanel1 = jPanel1;
+    }
+
+    public JLabel getJtnombre() {
+        return jtnombre;
+    }
+
+    public void setJtnombre(JLabel jtnombre) {
+        this.jtnombre = jtnombre;
+    }
+
     public void setJbimagen(JLabel jbimagen) {
         this.jbimagen = jbimagen;
     }
 
     public JLabel getJbnombr() {
-        return jbnombr;
+        return jtnombre;
     }
 
     public void setJbnombr(JLabel jbnombr) {
-        this.jbnombr = jbnombr;
+        this.jtnombre = jbnombr;
     }
 
     public JLabel getJbpro() {
@@ -155,6 +167,14 @@ public class Nuevo_Productos extends javax.swing.JFrame {
         this.jbnnombre = jbnnombre;
     }
 
+    public JTextField getTfidescrip() {
+        return tfidescrip;
+    }
+
+    public void setTfidescrip(JTextField tfidescrip) {
+        this.tfidescrip = tfidescrip;
+    }
+
     public JTextArea getJtbdespcrip() {
         return jtbdespcrip;
     }
@@ -185,7 +205,7 @@ public class Nuevo_Productos extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jbpro = new javax.swing.JLabel();
-        jbnombr = new javax.swing.JLabel();
+        jtnombre = new javax.swing.JLabel();
         jbimagen = new javax.swing.JLabel();
         jtbdescrp = new javax.swing.JLabel();
         jbnnombre = new javax.swing.JTextField();
@@ -193,6 +213,7 @@ public class Nuevo_Productos extends javax.swing.JFrame {
         btnguardar = new javax.swing.JButton();
         jbcontra = new javax.swing.JButton();
         btncancelar = new javax.swing.JButton();
+        tfidescrip = new javax.swing.JTextField();
 
         jtbdespcrip.setColumns(20);
         jtbdespcrip.setForeground(new java.awt.Color(51, 51, 255));
@@ -207,9 +228,9 @@ public class Nuevo_Productos extends javax.swing.JFrame {
         jbpro.setForeground(new java.awt.Color(102, 102, 255));
         jbpro.setText("Nuevo  Producto");
 
-        jbnombr.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jbnombr.setForeground(new java.awt.Color(51, 51, 255));
-        jbnombr.setText("Nombre");
+        jtnombre.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jtnombre.setForeground(new java.awt.Color(51, 51, 255));
+        jtnombre.setText("Nombre");
 
         jbimagen.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jbimagen.setForeground(new java.awt.Color(51, 51, 255));
@@ -252,7 +273,7 @@ public class Nuevo_Productos extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jbimagen, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbnombr, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtbdescrp, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -260,7 +281,8 @@ public class Nuevo_Productos extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jtbimagen, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jbcontra, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jbcontra, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfidescrip, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(53, 53, 53)
@@ -276,7 +298,7 @@ public class Nuevo_Productos extends javax.swing.JFrame {
                 .addComponent(jbpro, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbnombr, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbnnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -286,7 +308,9 @@ public class Nuevo_Productos extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jbimagen, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jtbimagen, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addComponent(jtbdescrp, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtbdescrp, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfidescrip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -367,30 +391,13 @@ public class Nuevo_Productos extends javax.swing.JFrame {
     private javax.swing.JButton jbcontra;
     private javax.swing.JLabel jbimagen;
     private javax.swing.JTextField jbnnombre;
-    private javax.swing.JLabel jbnombr;
     private javax.swing.JLabel jbpro;
     private javax.swing.JLabel jtbdescrp;
     private javax.swing.JTextArea jtbdespcrip;
     private javax.swing.JTextField jtbimagen;
+    private javax.swing.JLabel jtnombre;
+    private javax.swing.JTextField tfidescrip;
     // End of variables declaration//GEN-END:variables
 
-    public Object getPanelProducto() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public Object getTxtnombreproduc() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public Object getTexareadescripproduct() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public Object getTxtimagenproduc() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public Object getBtnguardproduct() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+  
 }

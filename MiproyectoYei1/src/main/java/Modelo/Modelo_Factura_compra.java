@@ -91,9 +91,9 @@ public class Modelo_Factura_compra {
     }
 
     //insertar factura compra
-    public void insertarFactcompra() {
+    public void insertarFactcompra() throws SQLException {
         Conexion conect = new Conexion();
-        Connection co = conect.iniciarConexion();
+        Connection co = conect.inciarConnexion();
         String sql = "call inst_factura_compra(?,?,?,?)";
 
         try {
@@ -111,7 +111,7 @@ public class Modelo_Factura_compra {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Error al guardar", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        conect.cerrarConexion();
+        conect.CerrarConexion();
     }
 
     //limpiar campos
@@ -127,9 +127,9 @@ public class Modelo_Factura_compra {
     }
 
 
-    public void mostrarTablaFactCompra(JTable tabla, String valor, String nompeste) {
+    public void mostrarTablaFactCompra(JTable tabla, String valor, String nompeste) throws SQLException {
         Conexion conect = new Conexion();
-        Connection co = conect.iniciarConexion();
+        Connection co = conect.inciarConnexion();
 
        
         JTableHeader encabeza = tabla.getTableHeader();
@@ -205,7 +205,7 @@ public class Modelo_Factura_compra {
             TableColumn columna = tabla.getColumnModel().getColumn(i);
             columna.setPreferredWidth(ancho[i]);
         }
-        conect.cerrarConexion();
+        conect.CerrarConexion();
     }
 
     public boolean seleccionCheck(JTable tabla) {
@@ -255,9 +255,9 @@ public class Modelo_Factura_compra {
 
     
 //TABLA DE DETALLE FACTURA COMPRA************************************************************************************
-    public void mostrarTablaDetalleFactCompra(JTable tabla, String valor, String nompeste) {
+    public void mostrarTablaDetalleFactCompra(JTable tabla, String valor, String nompeste) throws SQLException {
         Conexion conect = new Conexion();
-        Connection co = conect.iniciarConexion();
+        Connection co = conect.inciarConnexion();
 
         //Personalizar Encabezado
         JTableHeader encabeza = tabla.getTableHeader();
@@ -329,14 +329,14 @@ public class Modelo_Factura_compra {
             TableColumn columna = tabla.getColumnModel().getColumn(i);
             columna.setPreferredWidth(ancho[i]);
         }
-        conect.cerrarConexion();
+        conect.CerrarConexion();
     }
 //*************************************************************************************************************************
     //buscar factura compra
 
-    public void buscarFactcompra(int valor) {
+    public void buscarFactcompra(int valor) throws SQLException {
         Conexion conect = new Conexion();
-        Connection co = conect.iniciarConexion();
+        Connection co = conect.inciarConnexion();
         String sql = "call buscar_facturacompra(" + valor + ")";
         try {
             Statement st = co.createStatement();
@@ -369,9 +369,9 @@ public class Modelo_Factura_compra {
     }
 
     //Actualizar factura compra
-    public void actualizarFactcompra() {
+    public void actualizarFactcompra() throws SQLException {
         Conexion conect = new Conexion();
-        Connection con = conect.iniciarConexion();
+        Connection con = conect.inciarConnexion();
         String sql = "call actualizar_facturacompra(?,?,?,?)";
 
         try {
@@ -388,6 +388,6 @@ public class Modelo_Factura_compra {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        conect.cerrarConexion();
+        conect.CerrarConexion();
     }
 }
